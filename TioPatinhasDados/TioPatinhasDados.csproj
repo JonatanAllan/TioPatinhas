@@ -50,11 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contextos\BaseContexto.cs" />
-    <Compile Include="EntidadesConfig\ExemploConfig.cs" />
+    <Compile Include="EntidadesConfig\ClasseConfig.cs" />
+    <Compile Include="EntidadesConfig\FornecedorConfig.cs" />
+    <Compile Include="EntidadesConfig\EnderecoConfig.cs" />
+    <Compile Include="EntidadesConfig\FamiliaConfig.cs" />
+    <Compile Include="EntidadesConfig\GrupoConfig.cs" />
+    <Compile Include="EntidadesConfig\MarcaConfig.cs" />
+    <Compile Include="EntidadesConfig\PedidoConfig.cs" />
+    <Compile Include="EntidadesConfig\PedidoItemConfig.cs" />
+    <Compile Include="EntidadesConfig\PedidoStatusConfig.cs" />
+    <Compile Include="EntidadesConfig\ProdutoFornecedorConfig.cs" />
+    <Compile Include="EntidadesConfig\ProdutoConfig.cs" />
+    <Compile Include="EntidadesConfig\SubGrupoProdutoConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursos\OrderByExtensions.cs" />
     <Compile Include="Repositorios\BaseRepositorio.cs" />
-    <Compile Include="Repositorios\ExemploRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -65,6 +75,7 @@
       <Name>TioPatinhasDominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

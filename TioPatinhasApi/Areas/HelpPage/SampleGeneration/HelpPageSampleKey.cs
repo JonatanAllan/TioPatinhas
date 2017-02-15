@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net.Http.Headers;
 
 namespace TioPatinhasApi.Areas.HelpPage.SampleGeneration
 {

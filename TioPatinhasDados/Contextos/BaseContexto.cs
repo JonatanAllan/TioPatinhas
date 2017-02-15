@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using TioPatinhasDados.EntidadesConfig;
-using TioPatinhasDominio.Entidades;
 
 namespace TioPatinhasDados.Contextos
 {
@@ -20,7 +18,7 @@ namespace TioPatinhasDados.Contextos
             Configuration.LazyLoadingEnabled = false;
         }
 
-        public DbSet<Exemplo> Exemplos { get; set; }
+        //public DbSet<Exemplo> Exemplos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,7 +30,7 @@ namespace TioPatinhasDados.Contextos
             modelBuilder.Properties<string>().Configure(p => p.HasColumnType("VARCHAR"));
             modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(120));
 
-            modelBuilder.Configurations.Add(new ExemploConfig());
+            //modelBuilder.Configurations.Add(new ExemploConfig());
         }
 
         public override int SaveChanges()

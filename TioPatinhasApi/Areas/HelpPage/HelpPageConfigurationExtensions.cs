@@ -1,16 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Web.Http;
-using System.Web.Http.Controllers;
-using System.Web.Http.Description;
 using TioPatinhasApi.Areas.HelpPage.ModelDescriptions;
 using TioPatinhasApi.Areas.HelpPage.Models;
 using TioPatinhasApi.Areas.HelpPage.SampleGeneration;

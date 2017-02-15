@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Net.Http.Headers;
-using System.Web.Http.Description;
 using TioPatinhasApi.Areas.HelpPage.ModelDescriptions;
 
 namespace TioPatinhasApi.Areas.HelpPage.Models

@@ -1,9 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Web.Http.ExceptionHandling;
-using System.Web.Http.Results;
-using RestSharp;
-using TioPatinhasRecursos.ViewModels;
+﻿using TioPatinhasRecursos.ViewModels;
 
 namespace TioPatinhasApi.Recursos
 {

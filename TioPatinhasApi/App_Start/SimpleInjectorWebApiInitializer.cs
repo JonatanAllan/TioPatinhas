@@ -1,6 +1,3 @@
-using System.Web.Http;
-using SimpleInjector;
-using SimpleInjector.Integration.WebApi;
 using TioPatinhasApi;
 using TioPatinhasTransversal;
 

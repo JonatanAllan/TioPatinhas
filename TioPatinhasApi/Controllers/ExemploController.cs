@@ -4,8 +4,6 @@ using System.Net.Http;
 using System.Web.Http;
 using TioPatinhasApi.Parametros.Buscar;
 using TioPatinhasApi.Parametros.ContarListar;
-using TioPatinhasAplicacao.Interfaces.ServicosApp;
-using TioPatinhasDominio.Entidades;
 
 namespace TioPatinhasApi.Controllers
 {
