@@ -1,8 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Web.Http;
+using System.Web.Http.Description;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace TioPatinhasApi.Areas.HelpPage.ModelDescriptions
 {
@@ -50,7 +57,7 @@ namespace TioPatinhasApi.Areas.HelpPage.ModelDescriptions
                     RegularExpressionAttribute regularExpression = (RegularExpressionAttribute)a;
                     return String.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
                 }
-            },
+            }
         };
 
         // Modify this to add more default documentations.
@@ -74,7 +81,7 @@ namespace TioPatinhasApi.Areas.HelpPage.ModelDescriptions
             { typeof(TimeSpan), "time interval" },
             { typeof(DateTime), "date" },
             { typeof(DateTimeOffset), "date" },
-            { typeof(Boolean), "boolean" },
+            { typeof(Boolean), "boolean" }
         };
 
         private Lazy<IModelDocumentationProvider> _documentationProvider;

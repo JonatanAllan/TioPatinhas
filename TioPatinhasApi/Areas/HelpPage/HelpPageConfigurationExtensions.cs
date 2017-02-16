@@ -1,9 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Web.Http;
+using System.Web.Http.Controllers;
+using System.Web.Http.Description;
 using TioPatinhasApi.Areas.HelpPage.ModelDescriptions;
 using TioPatinhasApi.Areas.HelpPage.Models;
 using TioPatinhasApi.Areas.HelpPage.SampleGeneration;
@@ -230,9 +237,9 @@ namespace TioPatinhasApi.Areas.HelpPage
 
         private static HelpPageApiModel GenerateApiModel(ApiDescription apiDescription, HttpConfiguration config)
         {
-            HelpPageApiModel apiModel = new HelpPageApiModel()
+            HelpPageApiModel apiModel = new HelpPageApiModel
             {
-                ApiDescription = apiDescription,
+                ApiDescription = apiDescription
             };
 
             ModelDescriptionGenerator modelGenerator = config.GetModelDescriptionGenerator();
@@ -298,13 +305,13 @@ namespace TioPatinhasApi.Areas.HelpPage
 
                         if (!parameterDescriptor.IsOptional)
                         {
-                            uriParameter.Annotations.Add(new ParameterAnnotation() { Documentation = "Required" });
+                            uriParameter.Annotations.Add(new ParameterAnnotation { Documentation = "Required" });
                         }
 
                         object defaultValue = parameterDescriptor.DefaultValue;
                         if (defaultValue != null)
                         {
-                            uriParameter.Annotations.Add(new ParameterAnnotation() { Documentation = "Default value is " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture) });
+                            uriParameter.Annotations.Add(new ParameterAnnotation { Documentation = "Default value is " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture) });
                         }
                     }
                     else
@@ -338,7 +345,7 @@ namespace TioPatinhasApi.Areas.HelpPage
             {
                 Name = apiParameter.Name,
                 Documentation = apiParameter.Documentation,
-                TypeDescription = typeDescription,
+                TypeDescription = typeDescription
             };
 
             apiModel.UriParameters.Add(parameterDescription);

@@ -1,4 +1,8 @@
-﻿using TioPatinhasApi.Recursos;
+﻿using System.Web.Http;
+using System.Web.Http.Cors;
+using System.Web.Http.ExceptionHandling;
+using Newtonsoft.Json;
+using TioPatinhasApi.Recursos;
 
 namespace TioPatinhasApi
 {

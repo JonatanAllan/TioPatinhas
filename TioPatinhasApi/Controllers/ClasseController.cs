@@ -4,20 +4,22 @@ using System.Net.Http;
 using System.Web.Http;
 using TioPatinhasApi.Parametros.Buscar;
 using TioPatinhasApi.Parametros.ContarListar;
+using TioPatinhasAplicacao.Interfaces.ServicosApp;
+using TioPatinhasDominio.Entidades;
 
 namespace TioPatinhasApi.Controllers
 {
-    public class ExemploController : ApiController
+    public class ClasseController : ApiController
     {
-        private readonly IExemploServicosApp _servicosApp;
+        private readonly IClasseServicosApp _servicosApp;
 
-        public ExemploController(IExemploServicosApp servicosApp)
+        public ClasseController(IClasseServicosApp servicosApp)
         {
             _servicosApp = servicosApp;
         }
 
         [HttpGet]
-        public HttpResponseMessage Contar([FromUri]ExemploParametrosContarListar condicoes)
+        public HttpResponseMessage Contar([FromUri]ClasseParametrosContarListar condicoes)
         {
             var total = _servicosApp.Contar(condicoes.Expressao());
 
@@ -25,7 +27,7 @@ namespace TioPatinhasApi.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage Buscar([FromUri]ExemploParametrosBuscar condicoes)
+        public HttpResponseMessage Buscar([FromUri]ClasseParametrosBuscar condicoes)
         {
             var entidade = _servicosApp.Buscar(condicoes.Expressao());
 
@@ -33,7 +35,7 @@ namespace TioPatinhasApi.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage Listar([FromUri]ExemploParametrosContarListar condicoes, [FromUri]string ordenarPor = null, [FromUri]int? deslocamento = null, [FromUri]int? limite = null)
+        public HttpResponseMessage Listar([FromUri]ClasseParametrosContarListar condicoes, [FromUri]string ordenarPor = null, [FromUri]int? deslocamento = null, [FromUri]int? limite = null)
         {
             var lista = _servicosApp.Listar(condicoes.Expressao(), ordenarPor ?? "Codigo", deslocamento ?? 0, limite ?? 100);
 
@@ -43,71 +45,71 @@ namespace TioPatinhasApi.Controllers
         [HttpGet]
         public HttpResponseMessage ObterPorChave(object id)
         {
-            var exemplo = _servicosApp.ObterPorChave(id);
+            var Classe = _servicosApp.ObterPorChave(id);
 
-            return Request.CreateResponse(HttpStatusCode.OK, exemplo);
+            return Request.CreateResponse(HttpStatusCode.OK, Classe);
         }
 
         [HttpPost]
-        public HttpResponseMessage Inserir([FromBody]Exemplo exemplo)
+        public HttpResponseMessage Inserir([FromBody]Classe Classe)
         {
-            _servicosApp.Inserir(exemplo);
+            _servicosApp.Inserir(Classe);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage Atualizar([FromBody]Exemplo exemplo)
+        public HttpResponseMessage Atualizar([FromBody]Classe Classe)
         {
-            _servicosApp.Atualizar(exemplo);
+            _servicosApp.Atualizar(Classe);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage Remover([FromBody]Exemplo exemplo)
+        public HttpResponseMessage Remover([FromBody]Classe Classe)
         {
-            _servicosApp.Remover(exemplo);
+            _servicosApp.Remover(Classe);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage Mesclar([FromBody]Exemplo exemplo)
+        public HttpResponseMessage Mesclar([FromBody]Classe Classe)
         {
-            _servicosApp.Mesclar(exemplo);
+            _servicosApp.Mesclar(Classe);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage InserirEmMassa([FromBody]IEnumerable<Exemplo> exemplos)
+        public HttpResponseMessage InserirEmMassa([FromBody]IEnumerable<Classe> Classes)
         {
-            _servicosApp.InserirEmMassa(exemplos);
+            _servicosApp.InserirEmMassa(Classes);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage AtualizarEmMassa([FromBody]IEnumerable<Exemplo> exemplos)
+        public HttpResponseMessage AtualizarEmMassa([FromBody]IEnumerable<Classe> Classes)
         {
-            _servicosApp.AtualizarEmMassa(exemplos);
+            _servicosApp.AtualizarEmMassa(Classes);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage RemoverEmMassa([FromBody]IEnumerable<Exemplo> exemplos)
+        public HttpResponseMessage RemoverEmMassa([FromBody]IEnumerable<Classe> Classes)
         {
-            _servicosApp.RemoverEmMassa(exemplos);
+            _servicosApp.RemoverEmMassa(Classes);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public HttpResponseMessage MesclarEmMassa([FromBody]IEnumerable<Exemplo> exemplos)
+        public HttpResponseMessage MesclarEmMassa([FromBody]IEnumerable<Classe> Classes)
         {
-            _servicosApp.MesclarEmMassa(exemplos);
+            _servicosApp.MesclarEmMassa(Classes);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }

@@ -41,8 +41,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ServicosApp\IBaseServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IEnderecoServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IProdutoFornecedorServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\ISubGrupoProdutoServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IProdutoServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IPedidoStatusServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IPedidoItemServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IPedidoServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IMarcaServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IGrupoServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IFornecedorServicosApp.cs" />
+    <Compile Include="Interfaces\ServicosApp\IFamiliaServicosApp.cs" />
     <Compile Include="Interfaces\ServicosApp\IClasseServicosApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicosApp\BaseServicosApp.cs" />
+    <Compile Include="ServicosApp\FornecedorServicosApp.cs" />
+    <Compile Include="ServicosApp\SubGrupoProdutoServicosApp.cs" />
+    <Compile Include="ServicosApp\GrupoServicosApp.cs" />
+    <Compile Include="ServicosApp\FamiliaServicosApp.cs" />
+    <Compile Include="ServicosApp\MarcaServicosApp.cs" />
+    <Compile Include="ServicosApp\ProdutoFornecedorServicosApp.cs" />
+    <Compile Include="ServicosApp\PedidoStatusServicosApp.cs" />
+    <Compile Include="ServicosApp\PedidoItemServicosApp.cs" />
+    <Compile Include="ServicosApp\PedidoServicosApp.cs" />
+    <Compile Include="ServicosApp\ProdutoServicosApp.cs" />
+    <Compile Include="ServicosApp\EnderecoServicosApp.cs" />
+    <Compile Include="ServicosApp\ClasseServicosApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TioPatinhasDominio\TioPatinhasDominio.csproj">
@@ -50,9 +74,7 @@
       <Name>TioPatinhasDominio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ServicosApp\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

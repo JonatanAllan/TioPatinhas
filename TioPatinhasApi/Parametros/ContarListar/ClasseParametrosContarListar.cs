@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Linq.Expressions;
 using TioPatinhasApi.Recursos;
+using TioPatinhasDominio.Entidades;
 
 namespace TioPatinhasApi.Parametros.ContarListar
 {
-    public class ExemploParametrosContarListar : BaseParametrosContarListar<Exemplo>
+    public class ClasseParametrosContarListar : BaseParametrosContarListar<Classe>
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public override Expression<Func<Exemplo, bool>> Expressao()
+        public override Expression<Func<Classe, bool>> Expressao()
         {
-            var condicoes = PredicateBuilder.True<Exemplo>();
+            var condicoes = PredicateBuilder.True<Classe>();
 
             if (Descricao != null)
             {
-                condicoes = condicoes.And(x => x.Descricao.Contains(Descricao));
+                condicoes = condicoes.And(x => x.Nome.Contains(Descricao));
             }
 
             if (Nome != null)

@@ -20,6 +20,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using RestSharp.Serializers;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace TioPatinhasRecursos.Recursos
 {
@@ -29,7 +30,7 @@ namespace TioPatinhasRecursos.Recursos
     /// </summary>
     public class RestSharpJsonSerializer : ISerializer
     {
-        private readonly Newtonsoft.Json.JsonSerializer _serializer;
+        private readonly JsonSerializer _serializer;
 
         /// <summary>
         /// Default serializer
@@ -37,7 +38,7 @@ namespace TioPatinhasRecursos.Recursos
         public RestSharpJsonSerializer()
         {
             ContentType = "application/json";
-            _serializer = new Newtonsoft.Json.JsonSerializer
+            _serializer = new JsonSerializer
             {
                 MissingMemberHandling = MissingMemberHandling.Ignore,
                 NullValueHandling = NullValueHandling.Include,
@@ -48,7 +49,7 @@ namespace TioPatinhasRecursos.Recursos
         /// <summary>
         /// Default serializer with overload for allowing custom Json.NET settings
         /// </summary>
-        public RestSharpJsonSerializer(Newtonsoft.Json.JsonSerializer serializer)
+        public RestSharpJsonSerializer(JsonSerializer serializer)
         {
             ContentType = "application/json";
             _serializer = serializer;

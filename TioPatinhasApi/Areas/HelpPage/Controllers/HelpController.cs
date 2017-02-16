@@ -1,4 +1,6 @@
 using System;
+using System.Web.Http;
+using System.Web.Mvc;
 using TioPatinhasApi.Areas.HelpPage.ModelDescriptions;
 using TioPatinhasApi.Areas.HelpPage.Models;
 
