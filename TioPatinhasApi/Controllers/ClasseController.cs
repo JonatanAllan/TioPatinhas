@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TioPatinhasApi.Parametros.Buscar;
 using TioPatinhasApi.Parametros.ContarListar;
 using TioPatinhasAplicacao.Interfaces.ServicosApp;
+using AutoMapper;
 using TioPatinhasDominio.Entidades;
+using TioPatinhasRecursos.ViewModels.TioPatinhasApi;
 
 namespace TioPatinhasApi.Controllers
 {
@@ -21,97 +24,168 @@ namespace TioPatinhasApi.Controllers
         [HttpGet]
         public HttpResponseMessage Contar([FromUri]ClasseParametrosContarListar condicoes)
         {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
             var total = _servicosApp.Contar(condicoes.Expressao());
 
-            return Request.CreateResponse(HttpStatusCode.OK, total);
+            return Request.CreateResponse(total != null ? HttpStatusCode.OK : HttpStatusCode.NoContent, total);
+
         }
 
         [HttpGet]
         public HttpResponseMessage Buscar([FromUri]ClasseParametrosBuscar condicoes)
         {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
             var entidade = _servicosApp.Buscar(condicoes.Expressao());
 
-            return Request.CreateResponse(HttpStatusCode.OK, entidade);
+            return Request.CreateResponse(entidade != null ? HttpStatusCode.OK : HttpStatusCode.NoContent, entidade);
         }
 
         [HttpGet]
         public HttpResponseMessage Listar([FromUri]ClasseParametrosContarListar condicoes, [FromUri]string ordenarPor = null, [FromUri]int? deslocamento = null, [FromUri]int? limite = null)
         {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
             var lista = _servicosApp.Listar(condicoes.Expressao(), ordenarPor ?? "Codigo", deslocamento ?? 0, limite ?? 100);
 
-            return Request.CreateResponse(HttpStatusCode.OK, lista);
+            return Request.CreateResponse(lista.Any()? HttpStatusCode.OK : HttpStatusCode.NoContent, lista);
+
         }
 
         [HttpGet]
-        public HttpResponseMessage ObterPorChave(object id)
+        public HttpResponseMessage ObterPorChave(int codigo)
         {
-            var Classe = _servicosApp.ObterPorChave(id);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classe = _servicosApp.ObterPorChave(codigo);
 
-            return Request.CreateResponse(HttpStatusCode.OK, Classe);
+            return Request.CreateResponse(classe != null ? HttpStatusCode.OK : HttpStatusCode.NoContent, classe);
         }
 
         [HttpPost]
-        public HttpResponseMessage Inserir([FromBody]Classe Classe)
+        public HttpResponseMessage Inserir([FromBody]ClasseViewModel classeVm)
         {
-            _servicosApp.Inserir(Classe);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classe = Mapper.Map<Classe>(classeVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.Inserir(classe);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
+
         }
 
         [HttpPost]
-        public HttpResponseMessage Atualizar([FromBody]Classe Classe)
+        public HttpResponseMessage Atualizar([FromBody]ClasseViewModel classeVm)
         {
-            _servicosApp.Atualizar(Classe);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classe = Mapper.Map<Classe>(classeVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.Atualizar(classe);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
 
         [HttpPost]
-        public HttpResponseMessage Remover([FromBody]Classe Classe)
+        public HttpResponseMessage Remover([FromBody]ClasseViewModel classeVm)
         {
-            _servicosApp.Remover(Classe);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classe = Mapper.Map<Classe>(classeVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.Remover(classe);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
 
         [HttpPost]
-        public HttpResponseMessage Mesclar([FromBody]Classe Classe)
+        public HttpResponseMessage Mesclar([FromBody]ClasseViewModel classeVm)
         {
-            _servicosApp.Mesclar(Classe);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classe = Mapper.Map<Classe>(classeVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.Mesclar(classe);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
 
         [HttpPost]
-        public HttpResponseMessage InserirEmMassa([FromBody]IEnumerable<Classe> Classes)
+        public HttpResponseMessage InserirEmMassa([FromBody]IEnumerable<ClasseViewModel> classesVm)
         {
-            _servicosApp.InserirEmMassa(Classes);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classes = Mapper.Map<IEnumerable<Classe>>(classesVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.InserirEmMassa(classes);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
 
         [HttpPost]
-        public HttpResponseMessage AtualizarEmMassa([FromBody]IEnumerable<Classe> Classes)
+        public HttpResponseMessage AtualizarEmMassa([FromBody]IEnumerable<ClasseViewModel> classesVm)
         {
-            _servicosApp.AtualizarEmMassa(Classes);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classes = Mapper.Map<IEnumerable<Classe>>(classesVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.AtualizarEmMassa(classes);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
 
         [HttpPost]
-        public HttpResponseMessage RemoverEmMassa([FromBody]IEnumerable<Classe> Classes)
+        public HttpResponseMessage RemoverEmMassa([FromBody]IEnumerable<ClasseViewModel> classesVm)
         {
-            _servicosApp.RemoverEmMassa(Classes);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var classes = Mapper.Map<IEnumerable<Classe>>(classesVm);
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var resultado = _servicosApp.RemoverEmMassa(classes);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
 
         [HttpPost]
-        public HttpResponseMessage MesclarEmMassa([FromBody]IEnumerable<Classe> Classes)
+        public HttpResponseMessage MesclarEmMassa([FromBody]IEnumerable<ClasseViewModel> classesVm)
         {
-            _servicosApp.MesclarEmMassa(Classes);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+            var classes = Mapper.Map<IEnumerable<Classe>>(classesVm);
+
+            var resultado = _servicosApp.MesclarEmMassa(classes);
+
+            return Request.CreateResponse(resultado ? HttpStatusCode.OK : HttpStatusCode.NoContent);
         }
     }
 }

@@ -15,6 +15,8 @@ namespace TioPatinhasApi
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            TioPatinhasTransversal.AutoMapperConfig.RegisterMappings();
         }
 
         protected void Application_BeginRequest()

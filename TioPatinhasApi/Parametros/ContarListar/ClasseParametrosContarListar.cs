@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using TioPatinhasApi.Recursos;
 using TioPatinhasDominio.Entidades;
+using TioPatinhasRecursos.Atributos;
 
 namespace TioPatinhasApi.Parametros.ContarListar
 {
