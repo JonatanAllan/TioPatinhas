@@ -56,9 +56,9 @@
     <Compile Include="Recursos\RestSharpJsonSerializer.cs" />
     <Compile Include="ServicosExternos\BaseServicosExternos.cs" />
     <Compile Include="ServicosExternos\ExemploServicosExternos.cs" />
-    <Compile Include="ViewModels\EntidadeViewModel.cs" />
     <Compile Include="ViewModels\ExemploViewModel.cs" />
     <Compile Include="ViewModels\RespostaViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\ClasseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
