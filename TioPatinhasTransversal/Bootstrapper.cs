@@ -1,7 +1,6 @@
 ﻿using SimpleInjector;
 using TioPatinhasAplicacao.Interfaces.ServicosApp;
 using TioPatinhasAplicacao.ServicosApp;
-using TioPatinhasDominio.Interfaces.Repositorios;
 using TioPatinhasDominio.Interfaces.Servicos;
 using TioPatinhasDominio.Servicos;
 using TioPatinhasRecursos.Interfaces.ServicosExternos;

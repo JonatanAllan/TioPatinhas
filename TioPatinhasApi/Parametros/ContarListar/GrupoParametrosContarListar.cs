@@ -5,19 +5,13 @@ using TioPatinhasDominio.Entidades;
 
 namespace TioPatinhasApi.Parametros.ContarListar
 {
-    public class ClasseParametrosContarListar : BaseParametrosContarListar<Classe>
+    public class GrupoParametrosContarListar : BaseParametrosContarListar<Grupo>
     {
         public string Nome { get; set; }
-        public string Descricao { get; set; }
 
-        public override Expression<Func<Classe, bool>> Expressao()
+        public override Expression<Func<Grupo, bool>> Expressao()
         {
-            var condicoes = PredicateBuilder.True<Classe>();
-
-            if (Descricao != null)
-            {
-                condicoes = condicoes.And(x => x.Nome.Contains(Descricao));
-            }
+            var condicoes = PredicateBuilder.True<Grupo>();
 
             if (Nome != null)
             {

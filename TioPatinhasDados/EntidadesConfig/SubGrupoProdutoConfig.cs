@@ -24,7 +24,7 @@ namespace TioPatinhasDados.EntidadesConfig
                 .IsOptional()
                 .HasColumnOrder(1);
 
-            Property(t => t.GrupoCodExterno)
+            Property(t => t.GrupoCodigoExterno)
                 .IsOptional()
                 .HasColumnOrder(2);
 
@@ -36,7 +36,7 @@ namespace TioPatinhasDados.EntidadesConfig
                 .IsOptional()
                 .HasColumnOrder(4);
 
-            Property(t => t.GrupoCod)
+            Property(t => t.GrupoCodigo)
                 .HasColumnOrder(5);
 
             Property(t => t.DataCriacaoRegistro);
@@ -46,7 +46,7 @@ namespace TioPatinhasDados.EntidadesConfig
             //Relacionamentos
             HasRequired(t => t.Grupo)
                 .WithMany(t => t.SubGrupoProduto)
-                .HasForeignKey(d => d.GrupoCod);
+                .HasForeignKey(d => d.GrupoCodigo);
         }
     }
 }

@@ -58,7 +58,16 @@
     <Compile Include="ServicosExternos\ExemploServicosExternos.cs" />
     <Compile Include="ViewModels\ExemploViewModel.cs" />
     <Compile Include="ViewModels\RespostaViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\FornecedorViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\GrupoViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\PedidoStatusViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\PedidoViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\ProdutoFornecedorViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\ProdutoViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\SubGrupoProdutoViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\FamiliaViewModel.cs" />
     <Compile Include="ViewModels\TioPatinhasApi\ClasseViewModel.cs" />
+    <Compile Include="ViewModels\TioPatinhasApi\EnderecoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -9,15 +9,15 @@ namespace TioPatinhasDominio.Entidades
 
         public string CodigoExterno { get; set; }
 
-        public int GrupoCod { get; set; }
+        public int GrupoCodigo { get; set; }
+        public virtual Grupo Grupo { get; set; }
 
-        public string GrupoCodExterno { get; set; }
+        public string GrupoCodigoExterno { get; set; }
 
         public string Nome { get; set; }
 
         public DateTime DataExclusao { get; set; }
 
-        public virtual Grupo Grupo { get; set; }
 
         public virtual ICollection<Produto> Produto { get; set; }
     }

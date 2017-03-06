@@ -1,6 +1,6 @@
 ﻿namespace TioPatinhasRecursos.ViewModels.TioPatinhasApi
 {
-    public class ClasseViewModel
+    public class GrupoViewModel
     {
         public int Codigo { get; set; }
 
