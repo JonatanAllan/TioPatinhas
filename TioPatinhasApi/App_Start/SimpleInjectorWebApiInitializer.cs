@@ -1,37 +1,38 @@
 using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
-using TioPatinhasApi;
+using SimpleInjector.Lifestyles;
 using TioPatinhasTransversal;
-using WebActivatorEx;
-
-[assembly: PostApplicationStartMethod(typeof(SimpleInjectorWebApiInitializer), "Initialize")]
 
 namespace TioPatinhasApi
 {
     public static class SimpleInjectorWebApiInitializer
     {
         /// <summary>Initialize the container and register it as Web API Dependency Resolver.</summary>
-        public static void Initialize()
+        public static void Initialize(HttpConfiguration config)
         {
-            var container = new Container();
-            container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
-            
+            var container = new Container
+            {
+                Options =
+                {
+                    DefaultScopedLifestyle = new AsyncScopedLifestyle()
+                }
+            };
+
             InitializeContainer(container);
 
-            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
-       
+            container.RegisterWebApiControllers(config);
+
             container.Verify();
-            
-            GlobalConfiguration.Configuration.DependencyResolver =
-                new SimpleInjectorWebApiDependencyResolver(container);
+
+            config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
-     
+
         private static void InitializeContainer(Container container)
         {
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
-
+            
             Bootstrapper.RegisterServices(container);
         }
     }

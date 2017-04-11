@@ -114,7 +114,7 @@ namespace TioPatinhasDados.Repositorios
             return ObterPorChave(new[] { chave });
         }
 
-        public virtual TEntidade ObterPorChave(object[] chave)
+        public virtual TEntidade ObterPorChave(params object[] chave)
         {
             return Db.Set<TEntidade>().Find(chave);
         }
@@ -173,7 +173,7 @@ namespace TioPatinhasDados.Repositorios
             {
                 return noContexto
                     ? Db.Set<TEntidade>().Where(condicoes).OrderBy(ordenarPor)
-                    : Db.Set<TEntidade>().AsNoTracking().Where(condicoes).OrderBy(condicoes);
+                    : Db.Set<TEntidade>().AsNoTracking().Where(condicoes).OrderBy(ordenarPor);
             }
 
             // Ordenado

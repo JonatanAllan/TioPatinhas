@@ -1,6 +1,8 @@
 ﻿using SimpleInjector;
 using TioPatinhasAplicacao.Interfaces.ServicosApp;
 using TioPatinhasAplicacao.ServicosApp;
+using TioPatinhasDados.Repositorios;
+using TioPatinhasDominio.Interfaces.Repositorios;
 using TioPatinhasDominio.Interfaces.Servicos;
 using TioPatinhasDominio.Servicos;
 using TioPatinhasRecursos.Interfaces.ServicosExternos;
@@ -49,19 +51,18 @@ namespace TioPatinhasTransversal
             container.Register<ISubGrupoProdutoServicos, SubGrupoProdutoServicos>(Lifestyle.Scoped);
 
             // Infra
-            //container.Register<IExemploRepositorio, ExemploRepositorio>(Lifestyle.Scoped);
-            //container.Register<IClasseRepositorio, ClasseRepositorio>(Lifestyle.Scoped);
-            //container.Register<IEnderecoRepositorio, EnderecoRepositorio>(Lifestyle.Scoped);
-            //container.Register<IFamiliaRepositorio, FamiliaRepositorio>(Lifestyle.Scoped);
-            //container.Register<IFornecedorRepositorio, FornecedorRepositorio>(Lifestyle.Scoped);
-            //container.Register<IGrupoRepositorio, GrupoRepositorio>(Lifestyle.Scoped);
-            //container.Register<IMarcaRepositorio, MarcaRepositorio>(Lifestyle.Scoped);
-            //container.Register<IPedidoItemRepositorio, PedidoItemRepositorio>(Lifestyle.Scoped);
-            //container.Register<IPedidoRepositorio, PedidoRepositorio>(Lifestyle.Scoped);
-            //container.Register<IPedidoStatusRepositorio, PedidoStatusRepositorio>(Lifestyle.Scoped);
-            //container.Register<IProdutoFornecedorRepositorio, ProdutoFornecedorRepositorio>(Lifestyle.Scoped);
-            //container.Register<IProdutoRepositorio, ProdutoRepositorio>(Lifestyle.Scoped);
-            //container.Register<ISubGrupoProdutoRepositorio, SubGrupoProdutoRepositorio>(Lifestyle.Scoped);
+            container.Register<IClasseRepositorio, ClasseRepositorio>(Lifestyle.Scoped);
+            container.Register<IEnderecoRepositorio, EnderecoRepositorio>(Lifestyle.Scoped);
+            container.Register<IFamiliaRepositorio, FamiliaRepositorio>(Lifestyle.Scoped);
+            container.Register<IFornecedorRepositorio, FornecedorRepositorio>(Lifestyle.Scoped);
+            container.Register<IGrupoRepositorio, GrupoRepositorio>(Lifestyle.Scoped);
+            container.Register<IMarcaRepositorio, MarcaRepositorio>(Lifestyle.Scoped);
+            container.Register<IPedidoItemRepositorio, PedidoItemRepositorio>(Lifestyle.Scoped);
+            container.Register<IPedidoRepositorio, PedidoRepositorio>(Lifestyle.Scoped);
+            container.Register<IPedidoStatusRepositorio, PedidoStatusRepositorio>(Lifestyle.Scoped);
+            container.Register<IProdutoFornecedorRepositorio, ProdutoFornecedorRepositorio>(Lifestyle.Scoped);
+            container.Register<IProdutoRepositorio, ProdutoRepositorio>(Lifestyle.Scoped);
+            container.Register<ISubGrupoProdutoRepositorio, SubGrupoProdutoRepositorio>(Lifestyle.Scoped);
         }
     }
 }

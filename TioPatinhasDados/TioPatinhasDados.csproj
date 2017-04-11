@@ -65,6 +65,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursos\OrderByExtensions.cs" />
     <Compile Include="Repositorios\BaseRepositorio.cs" />
+    <Compile Include="Repositorios\SubGrupoProdutoRepositorio.cs" />
+    <Compile Include="Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Repositorios\ProdutoFornecedorRepositorio.cs" />
+    <Compile Include="Repositorios\PedidoStatusRepositorio.cs" />
+    <Compile Include="Repositorios\PedidoRepositorio.cs" />
+    <Compile Include="Repositorios\PedidoItemRepositorio.cs" />
+    <Compile Include="Repositorios\MarcaRepositorio.cs" />
+    <Compile Include="Repositorios\GrupoRepositorio.cs" />
+    <Compile Include="Repositorios\FornecedorRepositorio.cs" />
+    <Compile Include="Repositorios\FamiliaRepositorio.cs" />
+    <Compile Include="Repositorios\EnderecoRepositorio.cs" />
+    <Compile Include="Repositorios\ClasseRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -73,6 +85,10 @@
     <ProjectReference Include="..\TioPatinhasDominio\TioPatinhasDominio.csproj">
       <Project>{AB2D4CCA-A934-4AC5-B79E-84BA7E06A516}</Project>
       <Name>TioPatinhasDominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TioPatinhasRecursos\TioPatinhasRecursos.csproj">
+      <Project>{2f6f3ad4-b245-471e-a5ac-ec3989854c40}</Project>
+      <Name>TioPatinhasRecursos</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

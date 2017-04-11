@@ -2,7 +2,9 @@
 using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using Newtonsoft.Json;
+using Swashbuckle.Application;
 using TioPatinhasApi.Recursos;
+using TioPatinhasRecursos.Helpers;
 
 namespace TioPatinhasApi
 {
@@ -11,29 +13,33 @@ namespace TioPatinhasApi
         public static void Register(HttpConfiguration config)
         {
             // Enable CORS
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*", "Authorization,Content-Disposition,Content-Type"));
 
             // Web API configuration and services
             config.Services.Replace(typeof(IExceptionHandler), new WebApiExceptionHandler());
-
-            // Web API configuration and services
-            var formatters = GlobalConfiguration.Configuration.Formatters;
-            var jsonFormatter = formatters.JsonFormatter;
-            var settings = jsonFormatter.SerializerSettings;
-            formatters.Remove(formatters.XmlFormatter);
-            settings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
-            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            //settings.Formatting = Formatting.Indented;
-            //settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "SwaggerUI",
+                routeTemplate: null,
+                defaults: null,
+                constraints: null,
+                handler: new RedirectHandler(SwaggerHelpers.DefaultRootUrlResolver, "swagger"));
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Web API formatters configuration
+            var formatters = config.Formatters;
+            var settings = formatters.JsonFormatter.SerializerSettings;
+            formatters.Remove(formatters.XmlFormatter);
+            settings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace TioPatinhasRecursos.ServicosExternos
     public class ExemploServicosExternos : BaseServicosExternos, IExemploServicosExternos
     {
         public ExemploServicosExternos()
-            : base("http://localhost")
+            : base("http://localhost:3396", Servicos.TioPatinhas)
         {
             
         }
